@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'pages/analytics_page.dart';
-import 'pages/automation_page.dart';
-import 'pages/integration_page.dart';
+import 'pages/data_management.dart';
+import 'pages/risk_management.dart';
+import 'pages/compliance.dart';
 
 void main() => runApp(const MyApp());
 
@@ -26,23 +26,23 @@ class MyApp extends StatelessWidget {
       ),
       home: Scaffold(
         appBar: AppBar(
-          title: const Text(appTitle),
-        ),
+  title: const Text('Crescere Analytics'),
+),
         body: const SingleChildScrollView(
           child: Column(
             children: [
               ImageSection(
-                image: 'images/lake.jpg',
+                image: 'images/ai_audit.jpg',
               ),
               TitleSection(
-                name: 'Business AI SaaS',
-                location: 'Empowering Businesses',
-              ),
+  name: 'Crescere Analytics',
+  location: 'Reimagining the Future of Audit',
+),
               FeatureSection(),
               TextSection(
-                description:
-                    'Our cutting-edge Business AI SaaS solution leverages the power of artificial intelligence to streamline operations, enhance productivity, and drive growth. With advanced machine learning algorithms, we provide tailored insights and recommendations to help you make informed decisions and stay ahead of the competition.',
-              ),
+  description:
+      'Crescere Analytics is revolutionizing the audit industry by leveraging the power of artificial intelligence. Our cutting-edge solutions address the multifaceted challenges faced by the audit function, including data management, technology adoption, risk management, fraud detection, and regulatory compliance.',
+),
            ],
          ),
        ),
@@ -109,35 +109,35 @@ class FeatureSection extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
           FeatureButton(
-            color: color,
-            icon: Icons.analytics,
-            label: 'Analytics',
-            onTap: () {
+  color: color,
+  icon: Icons.data_usage,
+  label: 'Data Management',
+  onTap: () {
               Navigator.push(
                 context,
-                MaterialPageRoute(builder: (context) => const AnalyticsPage()),
+                MaterialPageRoute(builder: (context) => const DataManagementPage()),
               );
             },
           ),
           FeatureButton(
-            color: color,
-            icon: Icons.settings_applications,
-            label: 'Automation',
-            onTap: () {
+  color: color,
+  icon: Icons.security,
+  label: 'Risk Management',
+  onTap: () {
               Navigator.push(
                 context,
-                MaterialPageRoute(builder: (context) => const AutomationPage()),
+                MaterialPageRoute(builder: (context) => const RiskManagementPage()),
               );
             },
           ),
           FeatureButton(
-            color: color,
-            icon: Icons.integration_instructions,
-            label: 'Integration',
-            onTap: () {
+  color: color,
+  icon: Icons.gavel,
+  label: 'Compliance',
+  onTap: () {
               Navigator.push(
                 context,
-                MaterialPageRoute(builder: (context) => const IntegrationPage()),
+                MaterialPageRoute(builder: (context) => const CompliancePage()),
               );
             },
           ),
