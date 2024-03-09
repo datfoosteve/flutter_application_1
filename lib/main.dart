@@ -39,31 +39,46 @@ class MyApp extends StatelessWidget {
           actions: [
             TextButton(
               onPressed: () {
-                // Navigate to Home page
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => const MyApp()),
+                );
               },
               child: const Text('Home'),
             ),
             TextButton(
               onPressed: () {
-                // Navigate to About Us page
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => const AboutUsPage()),
+                );
               },
               child: const Text('About Us'),
             ),
             TextButton(
               onPressed: () {
-                // Navigate to Services page
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => const ServicesPage()),
+                );
               },
               child: const Text('Services'),
             ),
             TextButton(
               onPressed: () {
-                // Navigate to Insights page
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => const InsightsPage()),
+                );
               },
               child: const Text('Insights'),
             ),
             TextButton(
               onPressed: () {
-                // Navigate to Contact Us page
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => const ContactUsPage()),
+                );
               },
               child: const Text('Contact Us'),
             ),
@@ -86,6 +101,8 @@ class MyApp extends StatelessWidget {
                 description:
                     'Crescere Analytics is revolutionizing the audit industry by leveraging the power of artificial intelligence. Our cutting-edge solutions address the multifaceted challenges faced by the audit function, including data management, technology adoption, risk management, fraud detection, and regulatory compliance.',
               ),
+              SizedBox(height: 40),
+              Footer(),
             ],
           ),
         ),
@@ -132,7 +149,7 @@ class TitleSection extends StatelessWidget {
               ],
             ),
           ),
-          const FavoriteWidget(), // Removed the star icon and replaced with FavoriteWidget
+          const FavoriteWidget(),
         ],
       ),
     );
@@ -172,39 +189,50 @@ class HeroSection extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      height: 400,
-      decoration: const BoxDecoration(
-        image: DecorationImage(
-          image: AssetImage('images/hero_background.jpg'),
-          fit: BoxFit.cover,
-        ),
-      ),
-      child: const Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Text(
-              'Empowering Your Data, Transforming Your Future',
-              style: TextStyle(
-                fontSize: 32,
-                fontWeight: FontWeight.bold,
-                color: Color.fromARGB(255, 0, 0, 0),
-              ),
-              textAlign: TextAlign.center,
+    return Stack(
+      children: [
+        Container(
+          height: 400,
+          decoration: const BoxDecoration(
+            image: DecorationImage(
+              image: AssetImage('images/hero_background.jpg'),
+              fit: BoxFit.cover,
             ),
-            SizedBox(height: 20),
-            Text(
-              'Crescere Analytics: Your Trusted Partner in AI-Driven Analytics',
-              style: TextStyle(
-                fontSize: 18,
-                color: Color.fromARGB(255, 0, 0, 0),
-              ),
-              textAlign: TextAlign.center,
-            ),
-          ],
+          ),
         ),
-      ),
+        Center(
+          child: Container(
+            padding: const EdgeInsets.all(16),
+            decoration: BoxDecoration(
+              color: Colors.black.withOpacity(0.6),
+              borderRadius: BorderRadius.circular(10),
+            ),
+            child: const Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Text(
+                  'Empowering Your Data, Transforming Your Future',
+                  style: TextStyle(
+                    fontSize: 32,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.white,
+                  ),
+                  textAlign: TextAlign.center,
+                ),
+                SizedBox(height: 20),
+                Text(
+                  'Crescere Analytics: Your Trusted Partner in AI-Driven Analytics',
+                  style: TextStyle(
+                    fontSize: 18,
+                    color: Colors.white,
+                  ),
+                  textAlign: TextAlign.center,
+                ),
+              ],
+            ),
+          ),
+        ),
+      ],
     );
   }
 }
@@ -216,51 +244,48 @@ class FeatureSection extends StatelessWidget {
   Widget build(BuildContext context) {
     final Color color = Theme.of(context).primaryColor;
     return Padding(
-        padding: const EdgeInsets.symmetric(
-            horizontal: 16.0), // Adjust the padding as needed
-        child: SizedBox(
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            children: [
-              FeatureButton(
-                color: color,
-                icon: Icons.data_usage_outlined,
-                label: 'Data Management',
-                onTap: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: (context) => const DataManagementPage()),
-                  );
-                },
-              ),
-              FeatureButton(
-                color: color,
-                icon: Icons.security,
-                label: 'Risk Management',
-                onTap: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: (context) => const RiskManagementPage()),
-                  );
-                },
-              ),
-              FeatureButton(
-                color: color,
-                icon: Icons.gavel,
-                label: 'Compliance',
-                onTap: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: (context) => const CompliancePage()),
-                  );
-                },
-              ),
-            ],
-          ),
-        ));
+      padding: const EdgeInsets.symmetric(horizontal: 16.0),
+      child: SizedBox(
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          children: [
+            FeatureButton(
+              color: color,
+              icon: Icons.data_usage_outlined,
+              label: 'Data Management',
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => const DataManagementPage()),
+                );
+              },
+            ),
+            FeatureButton(
+              color: color,
+              icon: Icons.security,
+              label: 'Risk Management',
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => const RiskManagementPage()),
+                );
+              },
+            ),
+            FeatureButton(
+              color: color,
+              icon: Icons.gavel,
+              label: 'Compliance',
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => const CompliancePage()),
+                );
+              },
+            ),
+          ],
+        ),
+      ),
+    );
   }
 }
 
@@ -270,32 +295,42 @@ class FeatureButton extends StatelessWidget {
     required this.color,
     required this.icon,
     required this.label,
-    required this.onTap, // Added onTap parameter
+    required this.onTap,
   });
 
   final Color color;
   final IconData icon;
   final String label;
-  final VoidCallback onTap; // Added onTap parameter
+  final VoidCallback onTap;
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: onTap, // Use the onTap parameter in GestureDetector
+      onTap: onTap,
       child: Column(
         mainAxisSize: MainAxisSize.min,
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          Icon(icon, color: color),
-          Padding(
-            padding: const EdgeInsets.only(top: 8),
-            child: Text(
-              label,
-              style: TextStyle(
-                fontSize: 12,
-                fontWeight: FontWeight.w400,
-                color: color,
-              ),
+          AnimatedContainer(
+            duration: const Duration(milliseconds: 200),
+            padding: const EdgeInsets.all(16),
+            decoration: BoxDecoration(
+              color: color,
+              shape: BoxShape.circle,
+            ),
+            child: Icon(
+              icon,
+              color: Colors.white,
+              size: 32,
+            ),
+          ),
+          const SizedBox(height: 8),
+          Text(
+            label,
+            style: TextStyle(
+              fontSize: 14,
+              fontWeight: FontWeight.w600,
+              color: color,
             ),
           ),
         ],
@@ -319,6 +354,7 @@ class TextSection extends StatelessWidget {
       child: Text(
         description,
         softWrap: true,
+        style: const TextStyle(fontSize: 16),
       ),
     );
   }
@@ -455,6 +491,10 @@ class ServiceCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Card(
+      elevation: 4,
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(10),
+      ),
       child: Padding(
         padding: const EdgeInsets.all(16.0),
         child: Column(
@@ -488,35 +528,58 @@ class InsightsPage extends StatelessWidget {
       appBar: AppBar(
         title: const Text('Insights'),
       ),
-      body: const SingleChildScrollView(
-        padding: EdgeInsets.all(16.0),
+      body: SingleChildScrollView(
+        padding: const EdgeInsets.all(16.0),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text(
+            const Text(
               'Latest Insights',
               style: TextStyle(
                 fontSize: 24,
                 fontWeight: FontWeight.bold,
               ),
             ),
-            SizedBox(height: 20),
-            InsightCard(
+            const SizedBox(height: 20),
+            const InsightCard(
               title: 'The Future of Analytics: Trends to Watch',
               description:
                   'Discover the latest trends shaping the future of analytics and how businesses can stay ahead of the curve.',
             ),
-            SizedBox(height: 10),
-            InsightCard(
+            const SizedBox(height: 10),
+            const InsightCard(
               title: 'Leveraging AI for Smarter Decision Making',
               description:
                   'Learn how AI is transforming decision-making processes and enabling businesses to make data-driven choices.',
             ),
-            SizedBox(height: 10),
-            InsightCard(
+            const SizedBox(height: 10),
+            const InsightCard(
               title: 'Navigating Data Privacy and Security Challenges',
               description:
                   'Explore best practices for safeguarding data privacy and security in the age of big data and AI.',
+            ),
+            const SizedBox(height: 20),
+            ElevatedButton(
+              onPressed: () {
+                // Navigate to the blog or insights listing page
+                // Navigator.push(
+                //   context,
+                //   MaterialPageRoute(builder: (context) => const BlogPage()),
+                // );
+              },
+              style: ElevatedButton.styleFrom(
+                padding: const EdgeInsets.symmetric(
+                  horizontal: 32,
+                  vertical: 16,
+                ),
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(10),
+                ),
+              ),
+              child: const Text(
+                'View All Insights',
+                style: TextStyle(fontSize: 16),
+              ),
             ),
           ],
         ),
@@ -538,6 +601,10 @@ class InsightCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Card(
+      elevation: 4,
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(10),
+      ),
       child: Padding(
         padding: const EdgeInsets.all(16.0),
         child: Column(
@@ -587,18 +654,21 @@ class ContactUsPage extends StatelessWidget {
             const TextField(
               decoration: InputDecoration(
                 labelText: 'Name',
+                border: OutlineInputBorder(),
               ),
             ),
             const SizedBox(height: 10),
             const TextField(
               decoration: InputDecoration(
                 labelText: 'Email',
+                border: OutlineInputBorder(),
               ),
             ),
             const SizedBox(height: 10),
             const TextField(
               decoration: InputDecoration(
                 labelText: 'Message',
+                border: OutlineInputBorder(),
               ),
               maxLines: 5,
             ),
@@ -607,7 +677,19 @@ class ContactUsPage extends StatelessWidget {
               onPressed: () {
                 // Handle form submission
               },
-              child: const Text('Submit'),
+              style: ElevatedButton.styleFrom(
+                padding: const EdgeInsets.symmetric(
+                  horizontal: 32,
+                  vertical: 16,
+                ),
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(10),
+                ),
+              ),
+              child: const Text(
+                'Submit',
+                style: TextStyle(fontSize: 16),
+              ),
             ),
             const SizedBox(height: 40),
             const Text(
@@ -618,23 +700,52 @@ class ContactUsPage extends StatelessWidget {
               ),
             ),
             const SizedBox(height: 10),
-            const Text(
-              'Address: 123 Analytics Street, City, Country',
-              style: TextStyle(fontSize: 16),
+            const ContactInfoItem(
+              icon: Icons.location_on,
+              text: '123 Analytics Street, City, Country',
             ),
             const SizedBox(height: 5),
-            const Text(
-              'Phone: +1 123-456-7890',
-              style: TextStyle(fontSize: 16),
+            const ContactInfoItem(
+              icon: Icons.phone,
+              text: '+1 123-456-7890',
             ),
             const SizedBox(height: 5),
-            const Text(
-              'Email: info@crescereanalytics.com',
-              style: TextStyle(fontSize: 16),
+            const ContactInfoItem(
+              icon: Icons.email,
+              text: 'info@crescereanalytics.com',
             ),
           ],
         ),
       ),
+    );
+  }
+}
+
+class ContactInfoItem extends StatelessWidget {
+  final IconData icon;
+  final String text;
+
+  const ContactInfoItem({
+    super.key,
+    required this.icon,
+    required this.text,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+      children: [
+        Icon(
+          icon,
+          color: Theme.of(context).primaryColor,
+          size: 20,
+        ),
+        const SizedBox(width: 10),
+        Text(
+          text,
+          style: const TextStyle(fontSize: 16),
+        ),
+      ],
     );
   }
 }
@@ -686,6 +797,126 @@ class _FavoriteWidgetState extends State<FavoriteWidget> {
           ),
         ),
       ],
+    );
+  }
+}
+
+class Footer extends StatelessWidget {
+  const Footer({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      padding: const EdgeInsets.all(16),
+      decoration: BoxDecoration(
+        color: Colors.grey[200],
+      ),
+      child: const Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text(
+            'Crescere Analytics',
+            style: TextStyle(
+              fontSize: 20,
+              fontWeight: FontWeight.bold,
+            ),
+          ),
+          SizedBox(height: 10),
+          Text(
+            'Address: 123 Analytics Street, City, Country',
+            style: TextStyle(fontSize: 14),
+          ),
+          SizedBox(height: 5),
+          Text(
+            'Phone: +1 123-456-7890',
+            style: TextStyle(fontSize: 14),
+          ),
+          SizedBox(height: 5),
+          Text(
+            'Email: info@crescereanalytics.com',
+            style: TextStyle(fontSize: 14),
+          ),
+          SizedBox(height: 20),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              FooterLink(
+                icon: Icons.home,
+                text: 'Home',
+                route: '/',
+              ),
+              SizedBox(width: 20),
+              FooterLink(
+                icon: Icons.info,
+                text: 'About Us',
+                route: '/about',
+              ),
+              SizedBox(width: 20),
+              FooterLink(
+                icon: Icons.work,
+                text: 'Services',
+                route: '/services',
+              ),
+              SizedBox(width: 20),
+              FooterLink(
+                icon: Icons.insights,
+                text: 'Insights',
+                route: '/insights',
+              ),
+              SizedBox(width: 20),
+              FooterLink(
+                icon: Icons.contact_mail,
+                text: 'Contact Us',
+                route: '/contact',
+              ),
+            ],
+          ),
+          SizedBox(height: 20),
+          Center(
+            child: Text(
+              '© 2023 Crescere Analytics. All rights reserved.',
+              style: TextStyle(fontSize: 12),
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+class FooterLink extends StatelessWidget {
+  final IconData icon;
+  final String text;
+  final String route;
+
+  const FooterLink({
+    super.key,
+    required this.icon,
+    required this.text,
+    required this.route,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return GestureDetector(
+      onTap: () {
+        // Navigate to the corresponding route
+        Navigator.pushNamed(context, route);
+      },
+      child: Column(
+        children: [
+          Icon(
+            icon,
+            color: Theme.of(context).primaryColor,
+            size: 24,
+          ),
+          const SizedBox(height: 5),
+          Text(
+            text,
+            style: const TextStyle(fontSize: 14),
+          ),
+        ],
+      ),
     );
   }
 }
