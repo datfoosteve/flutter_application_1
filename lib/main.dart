@@ -113,7 +113,7 @@ class MyHomePage extends StatelessWidget {
               description:
                   'Crescere Analytics is revolutionizing the audit industry by leveraging the power of artificial intelligence. Our cutting-edge solutions address the multifaceted challenges faced by the audit function, including data management, technology adoption, risk management, fraud detection, and regulatory compliance.',
             ),
-            SizedBox(height: 40),
+            SizedBox(height: 60),
             Footer(),
           ],
         ),
@@ -121,6 +121,7 @@ class MyHomePage extends StatelessWidget {
     );
   }
 }
+
 class TitleSection extends StatelessWidget {
   const TitleSection({
     super.key,
@@ -210,35 +211,69 @@ class HeroSection extends StatelessWidget {
             ),
           ),
         ),
-        Center(
-          child: Container(
-            padding: const EdgeInsets.all(16),
-            decoration: BoxDecoration(
-              color: Colors.black.withOpacity(0.6),
-              borderRadius: BorderRadius.circular(10),
-            ),
-            child: const Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Text(
-                  'Empowering Your Data, Transforming Your Future',
-                  style: TextStyle(
-                    fontSize: 32,
-                    fontWeight: FontWeight.bold,
-                    color: Colors.white,
-                  ),
-                  textAlign: TextAlign.center,
+        Positioned.fill(
+          child: Center(
+            child: FractionallySizedBox(
+              widthFactor: 0.8,
+              child: AnimatedContainer(
+                duration: const Duration(milliseconds: 500),
+                padding: const EdgeInsets.all(24),
+                decoration: BoxDecoration(
+                  color: Colors.black.withOpacity(0.7),
+                  borderRadius: BorderRadius.circular(20),
+                  boxShadow: const [
+                    BoxShadow(
+                      color: Colors.black26,
+                      blurRadius: 20,
+                      offset: Offset(0, 10),
+                    ),
+                  ],
                 ),
-                SizedBox(height: 20),
-                Text(
-                  'Crescere Analytics: Your Trusted Partner in AI-Driven Analytics',
-                  style: TextStyle(
-                    fontSize: 18,
-                    color: Colors.white,
-                  ),
-                  textAlign: TextAlign.center,
+                child: Column(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    const Text(
+                      'Empowering Your Data, Transforming Your Future',
+                      style: TextStyle(
+                        fontSize: 32,
+                        fontWeight: FontWeight.bold,
+                        color: Colors.white,
+                      ),
+                      textAlign: TextAlign.center,
+                    ),
+                    const SizedBox(height: 20),
+                    const Text(
+                      'Crescere Analytics: Your Trusted Partner in AI-Driven Analytics',
+                      style: TextStyle(
+                        fontSize: 18,
+                        color: Colors.white,
+                      ),
+                      textAlign: TextAlign.center,
+                    ),
+                    const SizedBox(height: 30),
+                    ElevatedButton(
+                      onPressed: () {
+                        // Navigate to the desired page or perform an action
+                      },
+                      style: ElevatedButton.styleFrom(
+                        padding: const EdgeInsets.symmetric(
+                          horizontal: 32,
+                          vertical: 16,
+                        ),
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(10),
+                        ),
+                        backgroundColor: Colors.white,
+                        foregroundColor: Colors.black,
+                      ),
+                      child: const Text(
+                        'Get Started',
+                        style: TextStyle(fontSize: 18),
+                      ),
+                    ),
+                  ],
                 ),
-              ],
+              ),
             ),
           ),
         ),
@@ -266,7 +301,8 @@ class FeatureSection extends StatelessWidget {
               onTap: () {
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => const DataManagementPage()),
+                  MaterialPageRoute(
+                      builder: (context) => const DataManagementPage()),
                 );
               },
             ),
@@ -277,7 +313,8 @@ class FeatureSection extends StatelessWidget {
               onTap: () {
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => const RiskManagementPage()),
+                  MaterialPageRoute(
+                      builder: (context) => const RiskManagementPage()),
                 );
               },
             ),
@@ -288,7 +325,8 @@ class FeatureSection extends StatelessWidget {
               onTap: () {
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => const CompliancePage()),
+                  MaterialPageRoute(
+                      builder: (context) => const CompliancePage()),
                 );
               },
             ),
