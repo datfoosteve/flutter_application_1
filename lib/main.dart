@@ -24,93 +24,103 @@ class MyApp extends StatelessWidget {
           ),
         ),
       ),
-      home: Scaffold(
-        appBar: AppBar(
-          title: Row(
-            children: [
-              Image.asset(
-                'images/logo.png',
-                height: 40,
-              ),
-              const SizedBox(width: 10),
-              const Text(appTitle),
-            ],
-          ),
-          actions: [
-            TextButton(
-              onPressed: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => const MyApp()),
-                );
-              },
-              child: const Text('Home'),
-            ),
-            TextButton(
-              onPressed: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => const AboutUsPage()),
-                );
-              },
-              child: const Text('About Us'),
-            ),
-            TextButton(
-              onPressed: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => const ServicesPage()),
-                );
-              },
-              child: const Text('Services'),
-            ),
-            TextButton(
-              onPressed: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => const InsightsPage()),
-                );
-              },
-              child: const Text('Insights'),
-            ),
-            TextButton(
-              onPressed: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => const ContactUsPage()),
-                );
-              },
-              child: const Text('Contact Us'),
-            ),
-          ],
-        ),
-        body: const SingleChildScrollView(
-          child: Column(
-            children: [
-              HeroSection(),
-              IntroSection(),
-              ImageSection(
-                image: 'images/ai_audit.jpg',
-              ),
-              TitleSection(
-                name: 'Crescere Analytics',
-                location: 'Reimagining the Future of Audit',
-              ),
-              FeatureSection(),
-              TextSection(
-                description:
-                    'Crescere Analytics is revolutionizing the audit industry by leveraging the power of artificial intelligence. Our cutting-edge solutions address the multifaceted challenges faced by the audit function, including data management, technology adoption, risk management, fraud detection, and regulatory compliance.',
-              ),
-              SizedBox(height: 40),
-              Footer(),
-            ],
-          ),
-        ),
+      home: Navigator(
+        onGenerateRoute: (settings) {
+          switch (settings.name) {
+            case '/':
+              return MaterialPageRoute(builder: (_) => const MyHomePage());
+            case '/about':
+              return MaterialPageRoute(builder: (_) => const AboutUsPage());
+            case '/services':
+              return MaterialPageRoute(builder: (_) => const ServicesPage());
+            case '/insights':
+              return MaterialPageRoute(builder: (_) => const InsightsPage());
+            case '/contact':
+              return MaterialPageRoute(builder: (_) => const ContactUsPage());
+            default:
+              return MaterialPageRoute(builder: (_) => const MyHomePage());
+          }
+        },
       ),
     );
   }
 }
 
+class MyHomePage extends StatelessWidget {
+  const MyHomePage({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Row(
+          children: [
+            Image.asset(
+              'images/logo.png',
+              height: 40,
+            ),
+            const SizedBox(width: 10),
+            const Text('Crescere Analytics'),
+          ],
+        ),
+        actions: [
+          TextButton(
+            onPressed: () {
+              Navigator.pushNamed(context, '/');
+            },
+            child: const Text('Home'),
+          ),
+          TextButton(
+            onPressed: () {
+              Navigator.pushNamed(context, '/about');
+            },
+            child: const Text('About Us'),
+          ),
+          TextButton(
+            onPressed: () {
+              Navigator.pushNamed(context, '/services');
+            },
+            child: const Text('Services'),
+          ),
+          TextButton(
+            onPressed: () {
+              Navigator.pushNamed(context, '/insights');
+            },
+            child: const Text('Insights'),
+          ),
+          TextButton(
+            onPressed: () {
+              Navigator.pushNamed(context, '/contact');
+            },
+            child: const Text('Contact Us'),
+          ),
+        ],
+      ),
+      body: const SingleChildScrollView(
+        child: Column(
+          children: [
+            HeroSection(),
+            IntroSection(),
+            ImageSection(
+              image: 'images/ai_audit.jpg',
+            ),
+            TitleSection(
+              name: 'Crescere Analytics',
+              location: 'Reimagining the Future of Audit',
+            ),
+            FeatureSection(),
+            TextSection(
+              description:
+                  'Crescere Analytics is revolutionizing the audit industry by leveraging the power of artificial intelligence. Our cutting-edge solutions address the multifaceted challenges faced by the audit function, including data management, technology adoption, risk management, fraud detection, and regulatory compliance.',
+            ),
+            SizedBox(height: 40),
+            Footer(),
+          ],
+        ),
+      ),
+    );
+  }
+}
 class TitleSection extends StatelessWidget {
   const TitleSection({
     super.key,
