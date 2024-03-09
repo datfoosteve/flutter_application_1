@@ -189,7 +189,7 @@ class HeroSection extends StatelessWidget {
               style: TextStyle(
                 fontSize: 32,
                 fontWeight: FontWeight.bold,
-                color: Colors.white,
+                color: Color.fromARGB(255, 0, 0, 0),
               ),
               textAlign: TextAlign.center,
             ),
@@ -198,7 +198,7 @@ class HeroSection extends StatelessWidget {
               'Crescere Analytics: Your Trusted Partner in AI-Driven Analytics',
               style: TextStyle(
                 fontSize: 18,
-                color: Colors.white,
+                color: Color.fromARGB(255, 0, 0, 0),
               ),
               textAlign: TextAlign.center,
             ),
@@ -345,6 +345,295 @@ class ImageSection extends StatelessWidget {
       child: const SizedBox(
         width: double.infinity,
         height: 300,
+      ),
+    );
+  }
+}
+
+class AboutUsPage extends StatelessWidget {
+  const AboutUsPage({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text('About Us'),
+      ),
+      body: const SingleChildScrollView(
+        padding: EdgeInsets.all(16.0),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text(
+              'Our Mission',
+              style: TextStyle(
+                fontSize: 24,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+            SizedBox(height: 10),
+            Text(
+              'At Crescere Analytics, our mission is to empower businesses with intelligent analytics solutions that drive growth, mitigate risks, and ensure compliance. We strive to be the trusted partner for organizations seeking to harness the full potential of their data.',
+              style: TextStyle(fontSize: 16),
+            ),
+            SizedBox(height: 20),
+            Text(
+              'Our Values',
+              style: TextStyle(
+                fontSize: 24,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+            SizedBox(height: 10),
+            Text(
+              '- Innovation: We constantly push the boundaries of analytics and AI to deliver cutting-edge solutions.\n- Integrity: We maintain the highest standards of ethics and transparency in all our dealings.\n- Collaboration: We work closely with our clients to understand their unique needs and deliver tailored solutions.\n- Excellence: We strive for excellence in everything we do, from our technology to our customer service.',
+              style: TextStyle(fontSize: 16),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+class ServicesPage extends StatelessWidget {
+  const ServicesPage({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text('Services'),
+      ),
+      body: const SingleChildScrollView(
+        padding: EdgeInsets.all(16.0),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text(
+              'Our Services',
+              style: TextStyle(
+                fontSize: 24,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+            SizedBox(height: 20),
+            ServiceCard(
+              title: 'Data Management',
+              description:
+                  'We help businesses streamline their data management processes, ensuring data quality, security, and accessibility.',
+            ),
+            SizedBox(height: 10),
+            ServiceCard(
+              title: 'Risk Management',
+              description:
+                  'Our AI-powered risk management solutions enable businesses to identify, assess, and mitigate risks in real-time.',
+            ),
+            SizedBox(height: 10),
+            ServiceCard(
+              title: 'Compliance',
+              description:
+                  'We assist organizations in maintaining compliance with industry regulations and standards through intelligent analytics.',
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+class ServiceCard extends StatelessWidget {
+  final String title;
+  final String description;
+
+  const ServiceCard({
+    super.key,
+    required this.title,
+    required this.description,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Card(
+      child: Padding(
+        padding: const EdgeInsets.all(16.0),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text(
+              title,
+              style: const TextStyle(
+                fontSize: 20,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+            const SizedBox(height: 10),
+            Text(
+              description,
+              style: const TextStyle(fontSize: 16),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+class InsightsPage extends StatelessWidget {
+  const InsightsPage({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text('Insights'),
+      ),
+      body: const SingleChildScrollView(
+        padding: EdgeInsets.all(16.0),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text(
+              'Latest Insights',
+              style: TextStyle(
+                fontSize: 24,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+            SizedBox(height: 20),
+            InsightCard(
+              title: 'The Future of Analytics: Trends to Watch',
+              description:
+                  'Discover the latest trends shaping the future of analytics and how businesses can stay ahead of the curve.',
+            ),
+            SizedBox(height: 10),
+            InsightCard(
+              title: 'Leveraging AI for Smarter Decision Making',
+              description:
+                  'Learn how AI is transforming decision-making processes and enabling businesses to make data-driven choices.',
+            ),
+            SizedBox(height: 10),
+            InsightCard(
+              title: 'Navigating Data Privacy and Security Challenges',
+              description:
+                  'Explore best practices for safeguarding data privacy and security in the age of big data and AI.',
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+class InsightCard extends StatelessWidget {
+  final String title;
+  final String description;
+
+  const InsightCard({
+    super.key,
+    required this.title,
+    required this.description,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Card(
+      child: Padding(
+        padding: const EdgeInsets.all(16.0),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text(
+              title,
+              style: const TextStyle(
+                fontSize: 20,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+            const SizedBox(height: 10),
+            Text(
+              description,
+              style: const TextStyle(fontSize: 16),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+class ContactUsPage extends StatelessWidget {
+  const ContactUsPage({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text('Contact Us'),
+      ),
+      body: SingleChildScrollView(
+        padding: const EdgeInsets.all(16.0),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            const Text(
+              'Get in Touch',
+              style: TextStyle(
+                fontSize: 24,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+            const SizedBox(height: 20),
+            const TextField(
+              decoration: InputDecoration(
+                labelText: 'Name',
+              ),
+            ),
+            const SizedBox(height: 10),
+            const TextField(
+              decoration: InputDecoration(
+                labelText: 'Email',
+              ),
+            ),
+            const SizedBox(height: 10),
+            const TextField(
+              decoration: InputDecoration(
+                labelText: 'Message',
+              ),
+              maxLines: 5,
+            ),
+            const SizedBox(height: 20),
+            ElevatedButton(
+              onPressed: () {
+                // Handle form submission
+              },
+              child: const Text('Submit'),
+            ),
+            const SizedBox(height: 40),
+            const Text(
+              'Contact Information',
+              style: TextStyle(
+                fontSize: 24,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+            const SizedBox(height: 10),
+            const Text(
+              'Address: 123 Analytics Street, City, Country',
+              style: TextStyle(fontSize: 16),
+            ),
+            const SizedBox(height: 5),
+            const Text(
+              'Phone: +1 123-456-7890',
+              style: TextStyle(fontSize: 16),
+            ),
+            const SizedBox(height: 5),
+            const Text(
+              'Email: info@crescereanalytics.com',
+              style: TextStyle(fontSize: 16),
+            ),
+          ],
+        ),
       ),
     );
   }
