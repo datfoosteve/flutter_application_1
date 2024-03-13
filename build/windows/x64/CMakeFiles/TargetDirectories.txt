@@ -8,3 +8,7 @@ C:/Users/datfo/Desktop/Coding/flutterproj/flutter_application_1/build/windows/x6
 C:/Users/datfo/Desktop/Coding/flutterproj/flutter_application_1/build/windows/x64/runner/CMakeFiles/flutter_application_1.dir
 C:/Users/datfo/Desktop/Coding/flutterproj/flutter_application_1/build/windows/x64/runner/CMakeFiles/INSTALL.dir
 C:/Users/datfo/Desktop/Coding/flutterproj/flutter_application_1/build/windows/x64/runner/CMakeFiles/ALL_BUILD.dir
+C:/Users/datfo/Desktop/Coding/flutterproj/flutter_application_1/build/windows/x64/plugins/firebase_core/CMakeFiles/firebase_core_plugin.dir
+C:/Users/datfo/Desktop/Coding/flutterproj/flutter_application_1/build/windows/x64/plugins/firebase_core/CMakeFiles/INSTALL.dir
+C:/Users/datfo/Desktop/Coding/flutterproj/flutter_application_1/build/windows/x64/plugins/firebase_core/CMakeFiles/ALL_BUILD.dir
+C:/Users/datfo/Desktop/Coding/flutterproj/flutter_application_1/build/windows/x64/plugins/firebase_core/bin/CMakeFiles/INSTALL.dir
