@@ -1,10 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'pages/data_management.dart';
 import 'pages/risk_management.dart';
 import 'pages/compliance.dart';
 import 'pages/chatroom_page.dart';
 
-void main() => runApp(const MyApp());
+Future<void> main() async {
+  await dotenv.load(fileName: ".env");
+  runApp(const MyApp());
+}
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
@@ -25,26 +29,15 @@ class MyApp extends StatelessWidget {
           ),
         ),
       ),
-      home: Navigator(
-        onGenerateRoute: (settings) {
-          switch (settings.name) {
-            case '/':
-              return MaterialPageRoute(builder: (_) => const MyHomePage());
-            case '/about':
-              return MaterialPageRoute(builder: (_) => const AboutUsPage());
-            case '/chatroom':
-              return MaterialPageRoute(builder: (_) => const ChatroomPage());
-            case '/services':
-              return MaterialPageRoute(builder: (_) => const ServicesPage());
-            case '/insights':
-              return MaterialPageRoute(builder: (_) => const InsightsPage());
-            case '/contact':
-              return MaterialPageRoute(builder: (_) => const ContactUsPage());
-            default:
-              return MaterialPageRoute(builder: (_) => const MyHomePage());
-          }
-        },
-      ),
+      initialRoute: '/',
+      routes: {
+        '/': (context) => const MyHomePage(),
+        '/about': (context) => const AboutUsPage(),
+        '/chatroom': (context) => const ChatroomPage(),
+        '/services': (context) => const ServicesPage(),
+        '/insights': (context) => const InsightsPage(),
+        '/contact': (context) => const ContactUsPage(),
+      },
     );
   }
 }
