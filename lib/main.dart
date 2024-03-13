@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'pages/data_management.dart';
 import 'pages/risk_management.dart';
 import 'pages/compliance.dart';
+import 'pages/chatroom_page.dart';
 
 void main() => runApp(const MyApp());
 
@@ -31,6 +32,8 @@ class MyApp extends StatelessWidget {
               return MaterialPageRoute(builder: (_) => const MyHomePage());
             case '/about':
               return MaterialPageRoute(builder: (_) => const AboutUsPage());
+            case '/chatroom':
+              return MaterialPageRoute(builder: (_) => const ChatroomPage());
             case '/services':
               return MaterialPageRoute(builder: (_) => const ServicesPage());
             case '/insights':
@@ -75,6 +78,12 @@ class MyHomePage extends StatelessWidget {
               Navigator.pushNamed(context, '/about');
             },
             child: const Text('About Us'),
+          ),
+          TextButton(
+            onPressed: () {
+              Navigator.pushNamed(context, '/chatroom');
+            },
+            child: const Text('LLM Chatroom'),
           ),
           TextButton(
             onPressed: () {
