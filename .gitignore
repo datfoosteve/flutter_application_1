@@ -1,5 +1,45 @@
+# Dart/Flutter specific
 /.dart_tool
 /.idea
 /.metadata
 /.vscode
 /pubspec.lock
+/build
+/lib/generated_plugin_registrant.dart
+/android/local.properties
+/android/.gradle
+/android/app/build
+/android/build
+/ios/builds
+/ios/Pods
+/ios/.symlinks
+/ios/Flutter/App.framework
+/ios/Flutter/Flutter.framework
+/ios/Flutter/Generated.xcconfig
+/ios/Flutter/flutter_export_environment.sh
+/ios/Flutter/flutter_assets/
+
+# Web related
+/web/node_modules
+/web/build
+
+# Firebase related
+/firebase-debug.log
+/firebase-debug.*.log
+/.firebase
+
+# Others
+*.iml
+*.lock
+/.flutter-plugins
+/.flutter-plugins-dependencies
+/coverage/
+/doc/api/
+/test/coverage_helper.dart
+/test/*/pubspec.lock
+/test/**/node_modules
+/node_modules
+/.packages
+/.pub-cache/
+/.pub/
+/build
