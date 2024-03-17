@@ -44,3 +44,5 @@
 /.pub/
 /build
 .env
+build/
+.dart_tool/
