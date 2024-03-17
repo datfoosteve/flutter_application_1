@@ -26,7 +26,14 @@ jobs:
       - name: Deploy to Firebase Hosting
         uses: FirebaseExtended/action-hosting-deploy@v0
         with:
-          repoToken: '${{ secrets.GITHUB_TOKEN }}'
-          firebaseServiceAccount: '${{ secrets.FIREBASE_SERVICE_ACCOUNT_CRESCEREANALYTICS }}'
+          repoToken: ${{ secrets.GITHUB_TOKEN }}
+          firebaseServiceAccount: ${{ secrets.FIREBASE_SERVICE_ACCOUNT_CRESCEREANALYTICS }}
           channelId: live
           projectId: crescereanalytics
+          expires: 7d
+          entryPoint: .
+          firebaseToolsVersion: latest
+        env:
+          FIREBASE_CLI_EXPERIMENTS: webframeworks
+          FLUTTER_ROOT: /opt/hostedtoolcache/flutter/stable-3.19.3-x64
+          PUB_CACHE: /home/runner/.pub-cache
