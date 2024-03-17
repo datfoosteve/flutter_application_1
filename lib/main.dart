@@ -6,7 +6,7 @@ import 'pages/compliance.dart';
 import 'pages/chatroom_page.dart';
 
 Future<void> main() async {
-  await dotenv.load(fileName: ".env");
+  await dotenv.load(fileName: "dotenv_prod.env");
   runApp(const MyApp());
 }
 

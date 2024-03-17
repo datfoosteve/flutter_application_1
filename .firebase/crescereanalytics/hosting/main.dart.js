@@ -24309,7 +24309,7 @@ UM:function UM(){},
 akf(){var s=0,r=A.S(t.H),q,p,o,n,m,l,k
 var $async$akf=A.T(function(a,b){if(a===1)return A.P(b,r)
 while(true)switch(s){case 0:s=2
-return A.Y($.aol().y5(0,".env"),$async$akf)
+return A.Y($.aol().y5(0,"dotenv_prod.env"),$async$akf)
 case 2:if($.ak==null)A.asC()
 q=$.ak
 q.toString
