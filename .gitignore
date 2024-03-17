@@ -5,7 +5,6 @@
 /.vscode
 /pubspec.lock
 /build
-/lib/generated_plugin_registrant.dart
 /android/local.properties
 /android/.gradle
 /android/app/build
