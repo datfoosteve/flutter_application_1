@@ -4,9 +4,20 @@ import 'pages/data_management.dart';
 import 'pages/risk_management.dart';
 import 'pages/compliance.dart';
 import 'pages/chatroom_page.dart';
+import 'package:firebase_core/firebase_core.dart';
+import 'package:firebase_remote_config/firebase_remote_config.dart';
 
 Future<void> main() async {
   await dotenv.load(fileName: "dotenv_prod.env");
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
+  FirebaseRemoteConfig.instance.setConfigSettings(
+    RemoteConfigSettings(
+      fetchTimeout: const Duration(seconds: 60),
+      minimumFetchInterval: const Duration(minutes: 1),
+    ),
+  );
+  await FirebaseRemoteConfig.instance.fetchAndActivate();
   runApp(const MyApp());
 }
 
