@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_dotenv/flutter_dotenv.dart';
+
 import 'pages/data_management.dart';
 import 'pages/risk_management.dart';
 import 'pages/compliance.dart';
@@ -8,7 +8,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_remote_config/firebase_remote_config.dart';
 
 Future<void> main() async {
-  await dotenv.load(fileName: "dotenv_prod.env");
+
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
   FirebaseRemoteConfig.instance.setConfigSettings(

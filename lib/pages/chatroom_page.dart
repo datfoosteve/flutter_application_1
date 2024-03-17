@@ -53,13 +53,12 @@ class _ChatroomPageState extends State<ChatroomPage> {
     });
   }
 
-  Future<String> _getResponseFromChatGPT(String message,
-      {int retryCount = 0}) async {
-    String apiKey = await _getApiKeyFromRemoteConfig();
-    if (apiKey.isEmpty) {
-      // Handle the case when the API key is not available
-      return 'Failed to fetch API key. Please check your configuration.';
-    }
+ Future<String> _getResponseFromChatGPT(String message, {int retryCount = 0}) async {
+  String apiKey = await _getApiKeyFromRemoteConfig();
+  if (apiKey.isEmpty) {
+    // Handle the case when the API key is not available
+    return 'Failed to fetch API key. Please check your configuration.';
+  }
 
     String endpoint = 'https://api.openai.com/v1/chat/completions';
 
