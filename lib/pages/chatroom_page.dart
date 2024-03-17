@@ -40,8 +40,12 @@ class _ChatroomPageState extends State<ChatroomPage> {
     });
   }
 
+
  Future<String> _getResponseFromChatGPT(String message, {int retryCount = 0}) async {
   String apiKey = dotenv.env['OPENAI_API_KEY']!;
+
+  
+
   String endpoint = 'https://api.openai.com/v1/chat/completions';
 
 
@@ -147,6 +151,7 @@ class _ChatroomPageState extends State<ChatroomPage> {
   }
 }
 
+
 class ChatBubble extends StatelessWidget {
   final String message;
   final bool isUserMessage;
@@ -207,3 +212,4 @@ class RateLimiter {
     return func();
   }
 }
+
