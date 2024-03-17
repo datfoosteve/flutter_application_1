@@ -42,7 +42,7 @@ class _ChatroomPageState extends State<ChatroomPage> {
   }
 
   Future<String> _getResponseFromChatGPT(String message) async {
-  String apiKey = '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';
+  String apiKey = ''; //api key that doesnt work so yeah
   String endpoint = 'https://api.openai.com/v1/chat/completions';
 
   try {
