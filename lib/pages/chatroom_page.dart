@@ -42,8 +42,8 @@ class _ChatroomPageState extends State<ChatroomPage> {
     ),
   );
   await remoteConfig.fetchAndActivate();
-  if (remoteConfig.getValue('OPENAI_API_KEY').source == ValueSource.valueRemote) {
-    return remoteConfig.getString('OPENAI_API_KEY');
+  if (remoteConfig.getValue('OPEN_API_KEY').source == ValueSource.valueRemote) {
+    return remoteConfig.getString('OPEN_API_KEY');
   } else {
     // Handle the case when the value is not available from Remote Config
     print('Failed to fetch API key from Remote Config');
