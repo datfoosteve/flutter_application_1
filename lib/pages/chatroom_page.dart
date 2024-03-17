@@ -15,10 +15,34 @@ class ChatroomPage extends StatefulWidget {
   _ChatroomPageState createState() => _ChatroomPageState();
 }
 
-Future<String> _getApiKeyFromRemoteConfig() async {
+
+class _ChatroomPageState extends State<ChatroomPage> {
+  final TextEditingController _textController = TextEditingController();
+  final List<Map<String, String>> _messages = [];
+  bool _isLoading = false;
+  final _rateLimiter = RateLimiter(permits: 1, duration: const Duration(seconds: 1));
+  String _apiKey = '';
+
+  @override
+  void initState() {
+    super.initState();
+    _fetchApiKey();
+  }
+
+  Future<void> _fetchApiKey() async {
+    _apiKey = await _getApiKeyFromRemoteConfig();
+  }
+
+  Future<String> _getApiKeyFromRemoteConfig() async {
   final remoteConfig = FirebaseRemoteConfig.instance;
-  if (remoteConfig.getValue('OPENAI_API_KEY').source ==
-      ValueSource.valueRemote) {
+  remoteConfig.setConfigSettings(
+    RemoteConfigSettings(
+      fetchTimeout: const Duration(seconds: 60), // Add the fetchTimeout parameter
+      minimumFetchInterval: Duration.zero,
+    ),
+  );
+  await remoteConfig.fetchAndActivate();
+  if (remoteConfig.getValue('OPENAI_API_KEY').source == ValueSource.valueRemote) {
     return remoteConfig.getString('OPENAI_API_KEY');
   } else {
     // Handle the case when the value is not available from Remote Config
@@ -26,14 +50,6 @@ Future<String> _getApiKeyFromRemoteConfig() async {
     return '';
   }
 }
-
-
-class _ChatroomPageState extends State<ChatroomPage> {
-  final TextEditingController _textController = TextEditingController();
-  final List<Map<String, String>> _messages = [];
-  bool _isLoading = false;
-  final _rateLimiter =
-      RateLimiter(permits: 1, duration: const Duration(seconds: 1));
 
   void _sendMessage() async {
     String userMessage = _textController.text.trim();
@@ -47,8 +63,7 @@ class _ChatroomPageState extends State<ChatroomPage> {
     });
 
     // Make API request to ChatGPT
-    String apiResponse =
-        await _rateLimiter.call(() => _getResponseFromChatGPT(userMessage));
+    String apiResponse = await _rateLimiter.call(() => _getResponseFromChatGPT(userMessage));
 
     setState(() {
       _messages.add({'role': 'assistant', 'content': apiResponse});
@@ -56,21 +71,20 @@ class _ChatroomPageState extends State<ChatroomPage> {
     });
   }
 
- Future<String> _getResponseFromChatGPT(String message, {int retryCount = 0}) async {
-  String apiKey = await _getApiKeyFromRemoteConfig();
-  if (apiKey.isEmpty) {
+Future<String> _getResponseFromChatGPT(String message, {int retryCount = 0}) async {
+  if (_apiKey.isEmpty) {
     // Handle the case when the API key is not available
     return 'Failed to fetch API key. Please check your configuration.';
   }
 
-    String endpoint = 'https://api.openai.com/v1/chat/completions';
+  String endpoint = 'https://api.openai.com/v1/chat/completions';
 
-    try {
-      var response = await http.post(
-        Uri.parse(endpoint),
-        headers: {
-          'Content-Type': 'application/json',
-          'Authorization': 'Bearer $apiKey',
+  try {
+    var response = await http.post(
+      Uri.parse(endpoint),
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer $_apiKey', // Use _apiKey here
         },
         body: jsonEncode({
           'model': 'gpt-4-turbo-preview',
