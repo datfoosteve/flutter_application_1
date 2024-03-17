@@ -6,6 +6,15 @@ import 'package:http/http.dart' as http;
 import 'dart:convert';
 import 'package:firebase_remote_config/firebase_remote_config.dart';
 
+
+
+class ChatroomPage extends StatefulWidget {
+  const ChatroomPage({super.key});
+
+  @override
+  _ChatroomPageState createState() => _ChatroomPageState();
+}
+
 Future<String> _getApiKeyFromRemoteConfig() async {
   final remoteConfig = FirebaseRemoteConfig.instance;
   if (remoteConfig.getValue('OPENAI_API_KEY').source ==
@@ -18,12 +27,6 @@ Future<String> _getApiKeyFromRemoteConfig() async {
   }
 }
 
-class ChatroomPage extends StatefulWidget {
-  const ChatroomPage({super.key});
-
-  @override
-  _ChatroomPageState createState() => _ChatroomPageState();
-}
 
 class _ChatroomPageState extends State<ChatroomPage> {
   final TextEditingController _textController = TextEditingController();

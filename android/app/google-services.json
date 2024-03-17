@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "724999131137",
+    "project_id": "crescereanalytics",
+    "storage_bucket": "crescereanalytics.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:724999131137:android:a8ad9e42979e652135f000",
+        "android_client_info": {
+          "package_name": "com.example.flutter_application_1"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCa5xATTpsP_W3dqFGwu3wLcRPoOi-k7is"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
